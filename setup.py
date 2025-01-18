@@ -14,90 +14,111 @@ try:
         history = history_file.read()
 except IOError:
     history = ''
-
+#
 
 install_requires = [
-    'tensorflow>=2.2,<2.15',
-    'numpy>=1.17.5,<2',
-    'pandas>=1,<3',
-    'numba>=0.48,<0.60',
-    's3fs>=0.2.2,<0.5',
+    'tensorflow>=2.12,<2.15',
+    'numpy>=1.20,<2.0',
+    'pandas~=2.2.2',
+    'numba>=0.53,<0.60',
+    's3fs>=0.5,<1.0',
     'mlblocks>=0.6.2,<0.7',
     'ml-stars>=0.2.1.dev0,<0.4',
-    'scikit-learn>=0.22.1,<1.2',
-    'scipy<1.14',
-    'tabulate>=0.8.3,<0.9',
-    'pyts>=0.11,<0.14',
-    'torch>=1.4',
+    'scikit-learn>=1.5,<2.0',
+    'scipy>=1.5,<2.0',
+    'tabulate>=0.8.3,<1.0',
+    'pyts>=0.12,<1.0',
+    'torch>=1.10,<3.0',
     'azure-cognitiveservices-anomalydetector>=0.3,<0.4',
-    'xlsxwriter>=1.3.6,<1.4',
-    'tqdm>=4.36.1',
-    'stumpy>=1.7,<1.11',
+    'xlsxwriter>=1.3.6,<4.0',
+    'tqdm>=4.36.1,<5.0',
+    'stumpy>=1.11,<2.0',
     'ncps',
 
-    # fix conflict
+    # Fix conflict
     'protobuf<4',
-    
-    # fails on python 3.6
-    'opencv-python<4.7',
 
-    #UniTS
-    'timm', 
+    'opencv-python<5.0',
+
+    'timm',
     'smart_open',
-
 ]
 
 setup_requires = [
+    #
+    # pytest-runner is often used for older style test invocation.
+    # This is typically pinned loosely.
+    #
     'pytest-runner>=2.11.1',
 ]
 
 tests_require = [
-    'pytest>=3.4.2',
-    'pytest-cov>=2.6.0',
+    #
+    # Modern pytest + pytest-cov typically 7.x / 4.x,
+    # but if pinned for project reasons, keep them stable.
+    #
+    'pytest>=6.2,<8',
+    'pytest-cov>=2.6,<5',
     'rundoc>=0.4.3,<0.5',
 ]
 
 development_requires = [
+    #
     # general
-    'pip>=9.0.1',
-    'bumpversion>=0.5.3,<0.6',
-    'watchdog>=0.8.3,<0.11',
+    #
+    'pip>=20.0,<24',
+    'bumpversion>=0.5.3,<1.0',
+    'watchdog>=0.8.3,<3.0',
 
+    #
     # docs
-    'docutils>=0.12,<0.18',
-    'm2r2>=0.2.5,<0.3',
-    'nbsphinx>=0.5.0,<0.7',
-    'Sphinx>=3,<3.3',
-    'pydata-sphinx-theme<0.5',
-    'markupsafe<2.1.0',
-    'ipython>=6.5,<9',
-    'Jinja2>=2,<3',
+    # - docutils, Sphinx, nbsphinx, etc.
+    #   If your docs build is stable, you can raise these safely,
+    #   but watch for changes in Sphinx major versions.
+    #
+    'docutils>=0.15,<0.20',
+    'm2r2>=0.2.5,<1.0',
+    'nbsphinx>=0.5.0,<0.9',
+    'Sphinx>=3.0,<6.0',
+    'pydata-sphinx-theme<0.10',
+    'markupsafe<2.1.0',  # or remove if no longer needed
+    'ipython>=6.5,<10.0',
+    'Jinja2>=2,<4',
 
-    # fails on Sphinx < v3.4
+    #
+    # Some older pinned constraints for Sphinx ecosystem:
+    #
     'alabaster<=0.7.12',
-    # fails on Sphins < v5.0
     'sphinxcontrib-applehelp<1.0.8',
     'sphinxcontrib-devhelp<1.0.6',
     'sphinxcontrib-htmlhelp<2.0.5',
     'sphinxcontrib-serializinghtml<1.1.10',
     'sphinxcontrib-qthelp<1.0.7',
 
-    # style check
-    'flake8>=3.7.7,<4',
-    'isort>=4.3.4,<5',
+    #
+    # style checks
+    #
+    'flake8>=3.7.7,<6',
+    'isort>=4.3.4,<6',
 
+    #
     # fix style issues
+    #
     'autoflake>=1.2,<2',
-    'autopep8>=1.4.3,<2',
+    'autopep8>=1.4.3,<3',
     'importlib-metadata<5',
 
+    #
     # distribute on PyPI
-    'twine>=1.10.0,<4',
-    'wheel>=0.30.0',
+    #
+    'twine>=1.10.0,<5',
+    'wheel>=0.30.0,<1.0.0',
 
+    #
     # Advanced testing
-    'coverage>=4.5.1,<6',
-    'tox>=2.9.1,<4',
+    #
+    'coverage>=5.0,<8',
+    'tox>=3.2,<5.0',
     'invoke',
 ]
 
