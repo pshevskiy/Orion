@@ -156,7 +156,7 @@ setup(
     license="MIT license",
     long_description=readme + '\n\n' + history,
     long_description_content_type='text/markdown',
-    name='orion-ml',
+    name='orion',
     packages=find_packages(include=['orion', 'orion.*']),
     python_requires='>=3.8,<3.12',
     setup_requires=setup_requires,
