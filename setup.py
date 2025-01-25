@@ -21,7 +21,7 @@ install_requires = [
     'numpy>=1.17.5,<2',
     'pandas>=1,<3',
     'numba>=0.48,<0.60',
-    's3fs>=0.2.2,<0.5',
+    's3fs<1.0,>=0.5',
     'mlblocks>=0.6.2,<0.7',
     'ml-stars>=0.2.1.dev0,<0.4',
     'scikit-learn>=0.22.1,<2',
@@ -31,18 +31,22 @@ install_requires = [
     'torch>=1.4',
     'azure-cognitiveservices-anomalydetector>=0.3,<0.4',
     'xlsxwriter>=1.3.6,<1.4',
-    'tqdm>=4.36.1',
-    'stumpy>=1.7,<1.11',
+    'tqdm>=4.66.3',
+    'stumpy<2.0,>=1.7',
+
     'ncps',
+    'opencv-python<5',
+
+    # units
+    'timm',
+    'smart_open',
 
     # fix conflict
     'protobuf<4',
 ]
 
 pretrained_requires = [
-    #units
-    'timm',
-    'smart_open',
+
 
     #timesfm
     "timesfm[torch]>=1.2.0,<1.5;python_version>='3.11'",
